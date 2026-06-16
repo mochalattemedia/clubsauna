@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Club Sauna — The Cousin Eddie</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0A0A0A;
+      --charcoal: #161616;
+      --charcoal-mid: #1E1E1E;
+      --amber: #C17F3A;
+      --amber-light: #D4954A;
+      --cream: #F0EAD6;
+      --text-muted: rgba(240,234,214,0.45);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--cream); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 48px;
+      background: rgba(10,10,10,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(193,127,58,0.1);
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; letter-spacing: 0.04em; color: var(--cream); }
+    .nav-logo span { color: var(--amber); font-style: italic; }
+    .nav-cta {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--amber); text-decoration: none; border: 1px solid rgba(193,127,58,0.35);
+      padding: 9px 20px; transition: all 0.2s;
+    }
+    .nav-cta:hover { background: var(--amber); color: var(--black); }
+
+    .hero {
+      min-height: 100vh; position: relative; display: flex;
+      flex-direction: column; justify-content: flex-end;
+      padding: 0 48px 80px; overflow: hidden;
+    }
+    .hero-img {
+      position: absolute; inset: 0;
+      background: url('hero-night.jpeg') center center / cover no-repeat;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.55) 50%, rgba(10,10,10,0.25) 100%);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 740px; }
+    .eyebrow { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--amber); margin-bottom: 22px; }
+    .hero-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      font-weight: 700; line-height: 1.0; color: var(--cream); margin-bottom: 24px;
+    }
+    .hero-headline em { font-style: italic; color: var(--amber); }
+    .hero-sub { font-size: 1rem; font-weight: 300; color: var(--text-muted); max-width: 460px; line-height: 1.8; margin-bottom: 36px; }
+    .scroll-hint { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(193,127,58,0.45); }
+
+    /* REVEAL */
+    .reveal { background: var(--charcoal); padding: 96px 48px; }
+    .reveal-inner { max-width: 1080px; margin: 0 auto; }
+    .reveal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 60px; }
+    .reveal-panel { position: relative; aspect-ratio: 4/3; overflow: hidden; }
+    .reveal-panel img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.75); }
+    .panel-label {
+      position: absolute; bottom: 20px; left: 20px;
+      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+      background: rgba(10,10,10,0.7); padding: 5px 10px;
+    }
+    .panel-label-before { color: rgba(240,234,214,0.5); }
+    .panel-label-after { color: var(--amber); }
+    .reveal-text { text-align: center; }
+    .section-eyebrow { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 14px; }
+    .section-headline { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 3.5vw, 2.7rem); font-weight: 700; color: var(--cream); line-height: 1.15; margin-bottom: 18px; }
+    .section-headline em { font-style: italic; color: var(--amber); }
+    .section-body { font-size: 0.92rem; font-weight: 300; color: var(--text-muted); max-width: 540px; margin: 0 auto; line-height: 1.85; }
+
+    /* PHOTO STRIP */
+    .photo-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+    .strip-photo { aspect-ratio: 1; overflow: hidden; }
+    .strip-photo img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.8); transition: filter 0.3s; }
+    .strip-photo:hover img { filter: brightness(1); }
+
+    /* EXPERIENCE */
+    .experience { background: var(--black); padding: 96px 48px; }
+    .experience-inner { max-width: 1080px; margin: 0 auto; }
+    .experience-header { margin-bottom: 56px; }
+    .exp-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 4px;
+    }
+    .exp-row:last-child { margin-bottom: 0; }
+    .exp-card { background: var(--charcoal-mid); padding: 40px 36px; }
+    .exp-card.full { grid-column: span 2; display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: center; }
+    .exp-card-img { aspect-ratio: 4/3; overflow: hidden; }
+    .exp-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); }
+    .exp-tag { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); margin-bottom: 10px; }
+    .exp-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-style: italic; color: var(--cream); margin-bottom: 12px; }
+    .exp-desc { font-size: 0.84rem; font-weight: 300; color: var(--text-muted); line-height: 1.8; }
+
+    /* PRICING */
+    .pricing { background: var(--charcoal); padding: 96px 48px; text-align: center; }
+    .pricing-inner { max-width: 640px; margin: 0 auto; }
+    .pricing-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: 44px 0; }
+    .pricing-card { background: var(--charcoal-mid); padding: 40px 32px; text-align: left; }
+    .pricing-card.featured { background: var(--black); border: 1px solid rgba(193,127,58,0.2); }
+    .price-label { font-size: 0.64rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); margin-bottom: 10px; }
+    .price-amount { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 700; color: var(--cream); line-height: 1; margin-bottom: 14px; }
+    .price-desc { font-size: 0.8rem; font-weight: 300; color: var(--text-muted); line-height: 1.7; }
+    .pricing-note { font-size: 0.78rem; font-weight: 300; color: var(--text-muted); line-height: 1.8; }
+
+    /* INQUIRY */
+    .inquiry { background: var(--black); padding: 96px 48px; }
+    .inquiry-inner { max-width: 520px; margin: 0 auto; }
+    .inquiry-headline { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 3.8vw, 2.8rem); font-weight: 700; font-style: italic; color: var(--cream); line-height: 1.1; margin-bottom: 14px; }
+    .inquiry-sub { font-size: 0.88rem; font-weight: 300; color: var(--text-muted); line-height: 1.8; margin-bottom: 36px; }
+    .inquiry-form { display: flex; flex-direction: column; gap: 10px; }
+    .inquiry-form input, .inquiry-form textarea {
+      padding: 14px 18px; background: var(--charcoal);
+      border: 1px solid rgba(193,127,58,0.12); color: var(--cream);
+      font-family: 'Inter', sans-serif; font-size: 0.86rem; font-weight: 300;
+      outline: none; transition: border-color 0.2s; resize: none;
+    }
+    .inquiry-form input::placeholder, .inquiry-form textarea::placeholder { color: rgba(240,234,214,0.2); }
+    .inquiry-form input:focus, .inquiry-form textarea:focus { border-color: rgba(193,127,58,0.4); }
+    .inquiry-form button {
+      padding: 16px; background: var(--amber); color: var(--black);
+      font-family: 'Inter', sans-serif; font-size: 0.76rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase; border: none; cursor: pointer; transition: background 0.2s;
+    }
+    .inquiry-form button:hover { background: var(--amber-light); }
+    .inquiry-note { margin-top: 12px; font-size: 0.7rem; color: rgba(240,234,214,0.2); text-align: center; }
+
+    footer {
+      background: var(--charcoal); padding: 26px 48px;
+      display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid rgba(193,127,58,0.07);
+    }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--cream); }
+    .footer-logo span { color: var(--amber); font-style: italic; }
+    .footer-social a { color: rgba(240,234,214,0.28); font-size: 0.7rem; text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; margin-left: 20px; transition: color 0.2s; }
+    .footer-social a:hover { color: var(--amber); }
+    .footer-copy { font-size: 0.68rem; color: rgba(240,234,214,0.16); }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .hero { padding: 100px 24px 56px; }
+      .reveal, .experience, .pricing, .inquiry { padding: 64px 24px; }
+      .reveal-grid { grid-template-columns: 1fr; }
+      .photo-strip { grid-template-columns: 1fr 1fr; }
+      .exp-row { grid-template-columns: 1fr; }
+      .exp-card.full { grid-column: span 1; grid-template-columns: 1fr; }
+      .pricing-cards { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 14px; text-align: center; }
+      .footer-social a { margin: 0 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Club <span>Sauna</span></div>
+  <a href="#inquiry" class="nav-cta">Inquire</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="eyebrow">Washougal, Washington · By invitation</p>
+    <h1 class="hero-headline">
+      You'll judge it<br>
+      before you open<br>
+      <em>the door.</em>
+    </h1>
+    <p class="hero-sub">A 1971 Prowler trailer, gutted to its frame and rebuilt by hand into something you won't forget. Cedar walls. River stone floors. A Nippa wood stove. A wine barrel cold plunge. This is the Cousin Eddie.</p>
+    <p class="scroll-hint">Scroll to see inside ↓</p>
+  </div>
+</section>
+
+<!-- REVEAL -->
+<section class="reveal">
+  <div class="reveal-inner">
+    <div class="reveal-grid">
+      <div class="reveal-panel">
+        <img src="before-frame.jpeg" alt="Bare RV frame before the build" />
+        <span class="panel-label panel-label-before">The frame it started as</span>
+      </div>
+      <div class="reveal-panel">
+        <img src="after-interior.jpeg" alt="Finished cedar interior" />
+        <span class="panel-label panel-label-after">What it became</span>
+      </div>
+    </div>
+    <div class="reveal-text">
+      <p class="section-eyebrow">The transformation</p>
+      <h2 class="section-headline">Bare frame to <em>beautiful</em> — by hand.</h2>
+      <p class="section-body">Every plank of cedar fitted by hand. River stone laid across the floor. A Nippa wood stove that throws serious heat. Multi-tier benches built for lying flat, sitting up, or sweating it out with people you love. The outside was always part of the joke. The inside was always the point.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <div class="strip-photo"><img src="exterior-day.jpeg" alt="Cousin Eddie exterior in bloom" /></div>
+  <div class="strip-photo"><img src="nippa-stove.jpeg" alt="Nippa wood stove inside" /></div>
+  <div class="strip-photo"><img src="cold-plunge.jpeg" alt="Wine barrel cold plunge" /></div>
+  <div class="strip-photo"><img src="feast.jpeg" alt="The feast — borscht and bread" /></div>
+</div>
+
+<!-- EXPERIENCE -->
+<section class="experience">
+  <div class="experience-inner">
+    <div class="experience-header">
+      <p class="section-eyebrow">What you're getting into</p>
+      <h2 class="section-headline">Heat. Cold. <em>Feast.</em></h2>
+    </div>
+
+    <div class="exp-row">
+      <div class="exp-card">
+        <div class="exp-tag">The Sauna</div>
+        <div class="exp-title">Wood-fired. Cedar-lined. River stone floors.</div>
+        <p class="exp-desc">A Nippa wood stove, cedar benches on three tiers, and windows that let the light in without breaking the heat. Seats up to 8 at a time — rotate through for parties of 30 or more over a 5-hour session.</p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-tag">The Cold Plunge</div>
+        <div class="exp-title">A wine barrel full of cold water waiting for you.</div>
+        <p class="exp-desc">Step out of the sauna and straight into the barrel. Hot to cold, over and over. The contrast is the whole point. Your body will thank you the next morning.</p>
+      </div>
+    </div>
+
+    <div class="exp-row">
+      <div class="exp-card full">
+        <div class="exp-card-img">
+          <img src="people-night.jpeg" alt="Friends gathered at night" />
+        </div>
+        <div>
+          <div class="exp-tag">The Community</div>
+          <div class="exp-title">The kind of night people talk about for years.</div>
+          <p class="exp-desc">This isn't a spa. It's not a wellness retreat. It's a private experience built around fire, cold water, good food, and the people you bring with you. The Russians figured this out centuries ago — sauna is about community as much as heat. We lean into that fully.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-row">
+      <div class="exp-card">
+        <div class="exp-tag">The Fire Master</div>
+        <div class="exp-title">Every session is managed, start to finish.</div>
+        <p class="exp-desc">Your host manages the fire from first light to last log. This isn't self-serve — it's a curated experience. The Nippa takes time and attention to run right, and that's part of what you're paying for.</p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-tag">The Feast</div>
+        <div class="exp-title">Borscht. Dark bread. Good company.</div>
+        <p class="exp-desc">The Russian tradition is heat, then eat. Veniks, borscht, cold drinks, dark bread, people lingering around a table after an hour in the sauna. Come ready to stay. Leave feeling like you've been somewhere real.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing">
+  <div class="pricing-inner">
+    <p class="section-eyebrow">Simple pricing</p>
+    <h2 class="section-headline">Flat rate.<br><em>No per-person math.</em></h2>
+    <div class="pricing-cards">
+      <div class="pricing-card">
+        <div class="price-label">5 Hours</div>
+        <div class="price-amount">$600</div>
+        <p class="price-desc">Bring your group. Rotate through the sauna, cold plunge, and feast outside. Your fire master handles everything from first light to last log.</p>
+      </div>
+      <div class="pricing-card featured">
+        <div class="price-label">7 Hours</div>
+        <div class="price-amount">$750</div>
+        <p class="price-desc">For larger groups or those who want to go deeper. More rounds in the sauna, more time to feast, more time to just be present with your people.</p>
+      </div>
+    </div>
+    <p class="pricing-note">All sessions are private and by inquiry only. We're not a drop-in service — reach out and let's talk about what you're looking for.</p>
+  </div>
+</section>
+
+<!-- INQUIRY -->
+<section class="inquiry" id="inquiry">
+  <div class="inquiry-inner">
+    <h2 class="inquiry-headline">Come experience something you won't easily forget.</h2>
+    <p class="inquiry-sub">Sessions are by inquiry only. Tell us about your group and what you're looking for and we'll be in touch within 24 hours.</p>
+    <form class="inquiry-form" name="inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks">
+      <input type="hidden" name="form-name" value="inquiry" />
+      <p style="display:none"><input name="bot-field" /></p>
+      <input type="text" name="name" placeholder="Your name" required />
+      <input type="email" name="email" placeholder="Your email" required />
+      <input type="text" name="group" placeholder="Group size & occasion (optional)" />
+      <textarea name="message" rows="4" placeholder="Tell us what you're looking for..."></textarea>
+      <button type="submit">Send Inquiry</button>
+    </form>
+    <p class="inquiry-note">We'll respond within 24 hours.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Club <span>Sauna</span></div>
+  <div class="footer-social">
+    <a href="https://instagram.com/cousineddiesauna" target="_blank">Instagram</a>
+  </div>
+  <div class="footer-copy">© 2026 Club Sauna · Washougal, WA</div>
+</footer>
+
+<script>
+  document.querySelector('.nav-cta').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector('#inquiry').scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>
