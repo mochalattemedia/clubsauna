@@ -41,7 +41,7 @@
     .hero-meta { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(193,127,58,0.45); }
 
     /* REVEAL */
-    .reveal { background: var(--charcoal); padding: 96px 48px; }
+    .reveal { background: var(--charcoal); padding: 96px 48px 24px; }
     .reveal-inner { max-width: 1080px; margin: 0 auto; }
     .reveal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 56px; }
     .reveal-panel { position: relative; aspect-ratio: 4/3; overflow: hidden; }
@@ -49,6 +49,7 @@
     .panel-label { position: absolute; bottom: 16px; left: 16px; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; background: rgba(10,10,10,0.75); padding: 5px 10px; }
     .panel-label-before { color: rgba(240,234,214,0.45); }
     .panel-label-after { color: var(--amber); }
+    .reveal-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: clamp(1.1rem, 2vw, 1.5rem); text-transform: uppercase; color: var(--cream); letter-spacing: 0.02em; text-align: center; margin-bottom: 16px; }
     .reveal-text { text-align: center; }
     .section-label { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 12px; }
     .section-headline { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: clamp(1.8rem, 3.5vw, 2.8rem); text-transform: uppercase; color: var(--cream); line-height: 1.05; margin-bottom: 16px; }
@@ -149,20 +150,24 @@
 <section class="reveal">
   <div class="reveal-inner">
     <div class="reveal-grid">
-      <div class="reveal-panel">
-        <img src="before-frame.jpeg" alt="Bare RV frame" />
-        <span class="panel-label panel-label-before">Where it started</span>
+      <div>
+        <p class="reveal-title">Where it started</p>
+        <div class="reveal-panel">
+          <img src="before-frame.jpeg" alt="Bare RV frame" />
+        </div>
       </div>
-      <div class="reveal-panel">
-        <img src="IMG_8030.jpeg" alt="Inside — cedar benches, river stone, Nippa stove" />
-        <span class="panel-label panel-label-after">Where it ended up</span>
+      <div>
+        <p class="reveal-title">Where it ended up</p>
+        <div class="reveal-panel">
+          <img src="IMG_8030.jpeg" alt="Inside — cedar benches, river stone, Nippa stove" />
+        </div>
       </div>
     </div>
 
   </div>
 </section>
 
-<div style="text-align:center; padding:64px 24px 0; background:var(--charcoal);">
+<div style="text-align:center; padding:24px 24px 0; background:var(--charcoal);">
   <p style="font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:clamp(1.6rem,3vw,2.4rem); text-transform:uppercase; color:var(--cream); letter-spacing:0.02em;">The Cousin Eddie</p>
 </div>
 
