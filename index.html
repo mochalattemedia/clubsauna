@@ -41,22 +41,23 @@
     .hero-meta { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(193,127,58,0.45); }
 
     /* REVEAL */
-    .reveal { background: var(--charcoal); padding: 96px 48px; }
+    .reveal { background: var(--charcoal); padding: 96px 48px 24px; }
     .reveal-inner { max-width: 1080px; margin: 0 auto; }
     .reveal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 56px; }
     .reveal-panel { position: relative; aspect-ratio: 4/3; overflow: hidden; }
     .reveal-panel img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.8); }
     .panel-label { position: absolute; bottom: 16px; left: 16px; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; background: rgba(10,10,10,0.75); padding: 5px 10px; }
-    .panel-label-before, .panel-label-after { color: #FFFFFF; font-weight: 700; }
-    .reveal-heading { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: clamp(1.8rem, 3.5vw, 2.6rem); text-transform: uppercase; color: #FFFFFF; letter-spacing: 0.02em; }
+    .panel-label-before { color: rgba(240,234,214,0.45); }
+    .panel-label-after { color: var(--amber); }
+    .reveal-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: clamp(1.1rem, 2vw, 1.5rem); text-transform: uppercase; color: var(--cream); letter-spacing: 0.02em; text-align: center; margin-bottom: 16px; }
     .reveal-text { text-align: center; }
     .section-label { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 12px; }
     .section-headline { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: clamp(1.8rem, 3.5vw, 2.8rem); text-transform: uppercase; color: var(--cream); line-height: 1.05; margin-bottom: 16px; }
     .section-body { font-size: 0.9rem; font-weight: 300; color: var(--muted); max-width: 520px; margin: 0 auto; line-height: 1.85; }
 
     /* FEATURE SHOT */
-    .feature-shot { position: relative; height: 70vh; overflow: hidden; }
-    .feature-shot img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.88); }
+    .feature-shot { position: relative; overflow: hidden; }
+    .feature-shot img { width: 100%; height: auto; display: block; filter: brightness(0.88); }
     .feature-shot-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,0.6) 0%, transparent 60%); }
     .feature-caption { position: absolute; bottom: 32px; left: 48px; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(240,234,214,0.45); }
 
@@ -96,7 +97,7 @@
     .pricing-card { background: var(--charcoal-mid); padding: 40px 32px; text-align: left; }
     .pricing-card.featured { background: var(--charcoal); border: 1px solid rgba(193,127,58,0.18); }
     .price-label { font-size: 0.64rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); margin-bottom: 10px; }
-    .price-amount { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 3.2rem; color: var(--cream); line-height: 1; margin-bottom: 14px; }
+    .price-amount { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 3.2rem; color: var(--cream); line-height: 1; }
     .price-desc { font-size: 0.8rem; font-weight: 300; color: var(--muted); line-height: 1.7; }
     .pricing-note { font-size: 0.78rem; font-weight: 300; color: var(--muted); line-height: 1.8; }
 
@@ -159,22 +160,26 @@
 <section class="reveal">
   <div class="reveal-inner">
     <div class="reveal-grid">
-      <div class="reveal-panel">
-        <img src="before-frame.jpeg" alt="Bare RV frame" />
-        <span class="panel-label panel-label-before">Where it started</span>
+      <div>
+        <p class="reveal-title">Where it started</p>
+        <div class="reveal-panel">
+          <img src="before-frame.jpeg" alt="Bare RV frame" />
+        </div>
       </div>
-      <div class="reveal-panel">
-        <img src="IMG_8030.jpeg" alt="Inside — cedar benches, river stone, Nippa stove" />
-        <span class="panel-label panel-label-after">Where it ended up</span>
+      <div>
+        <p class="reveal-title">Where it ended up</p>
+        <div class="reveal-panel">
+          <img src="IMG_8030.jpeg" alt="Inside — cedar benches, river stone, Nippa stove" />
+        </div>
       </div>
-    </div>
-
-    <div class="reveal-text">
-      <h2 class="reveal-heading">The Cousin Eddie</h2>
     </div>
 
   </div>
 </section>
+
+<div style="text-align:center; padding:24px 24px 0; background:var(--charcoal);">
+  <p style="font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:clamp(1.6rem,3vw,2.4rem); text-transform:uppercase; color:var(--cream); letter-spacing:0.02em;">The Cousin Eddie</p>
+</div>
 
 <!-- FEATURE — yellow loungers -->
 <div class="feature-shot">
@@ -187,22 +192,24 @@
 <div class="gallery">
   <div class="gallery-grid">
     <div class="g g-2x1"><img src="interior-sun.jpeg" alt="Interior with sunlight" /></div>
-    <div class="g g-1x1"><img src="kenny-robe.jpeg" alt="Your fire master" /></div>
+    <div class="g g-1x1"><img style="object-position:center top;" src="kenny-robe.jpeg" alt="Your fire host" /></div>
     <div class="g g-1x1"><img src="lanterns.jpeg" alt="Lanterns on the deck" /></div>
-    <div class="g g-1x1"><img src="relaxing.jpeg" alt="Relaxing inside" /></div>
-    <div class="g g-1x1"><img src="IMG_8036.jpeg" alt="Wine barrel cold plunge" /></div>
+    <div class="g g-1x1"><img style="object-position:center top;" src="relaxing.jpeg" alt="Relaxing inside" /></div>
+    <div class="g g-1x1"><img style="object-position:center top;" src="IMG_8036.jpeg" alt="Wine barrel cold plunge" /></div>
     <div class="g g-2x1"><img src="night-front.jpeg" alt="Night exterior" /></div>
     <div class="g g-1x1"><img src="interior-wide.jpeg" alt="Interior overview" /></div>
     <div class="g g-1x1"><img src="bench-interior.jpeg" alt="Cedar bench" /></div>
     <div class="g g-1x1"><img src="indoor-plunge.jpeg" alt="Indoor cold plunge" /></div>
     <div class="g g-1x1"><img src="nippa-stove.jpeg" alt="Nippa stove" /></div>
     <div class="g g-1x1"><img src="feast.jpeg" alt="Borscht and bread" /></div>
-    <div class="g g-1x1"><img src="people-night.jpeg" alt="Friends at night" /></div>
+    <div class="g g-1x1"><img style="object-position:center top;" src="people-night.jpeg" alt="Friends at night" /></div>
     <div class="g g-2x1"><img style="object-position:center 20%;" src="festival.jpeg" alt="Sauna festival" /></div>
     <div class="g g-1x1"><img src="door-open.jpeg" alt="Door open with firewood" /></div>
     <div class="g g-1x1"><img src="awning.jpeg" alt="The awning open" /></div>
     <div class="g g-1x1"><img src="on-street.jpeg" alt="On the street" /></div>
     <div class="g g-1x1"><img src="firewood.jpeg" alt="Firewood" /></div>
+    <div class="g g-1x1"><img src="exterior-summer2.jpeg" alt="Exterior summer view" /></div>
+    <div class="g g-1x1"><img src="on-street2.jpeg" alt="On the street" /></div>
     
   </div>
 </div>
@@ -216,27 +223,27 @@
     <div class="exp-list">
       <div class="exp-row">
         <div class="exp-title">The Sauna</div>
-        <p class="exp-desc">Nippa wood stove, cedar benches on multiple tiers, river stone floors. Seats up to 8 at a time — rotate through for parties of 30 or more over a 5-hour session.</p>
+        <p class="exp-desc">We can accommodate both smaller and larger groups, depending on your event's goals. The Cousin Eddie has been used for small retreats with just a few people up to 30 or more, for a half day, full day, or multiple days.</p>
       </div>
       <div class="exp-row">
         <div class="exp-title">Cold Plunge — Two Options</div>
-        <p class="exp-desc">An indoor cold plunge tub built right inside the trailer, and a converted wine barrel cold plunge outside. Hot to cold, as many rounds as you want.</p>
+        <p class="exp-desc">One of the fun features of the Cousin Eddie is the cold plunge inside, but for those who prefer a higher bench or have limited access to water, we have a high bench that can go over the indoor cold plunge. We also have a wine barrel cold plunge for use outside the sauna.</p>
       </div>
       <div class="exp-row">
         <div class="exp-title">Sink & Water</div>
-        <p class="exp-desc">Running water inside. Rinse off, fill a pitcher, stay hydrated. The basics, done right.</p>
+        <p class="exp-desc">The Cousin Eddie isn't just a hot room — it's a bathing room with access to running water and an operating sink.</p>
       </div>
       <div class="exp-row">
-        <div class="exp-title">Fire Master</div>
-        <p class="exp-desc">Every session includes your host managing the fire from first light to last log. Setup, management, breakdown — handled. You just show up and get blissed out.</p>
+        <div class="exp-title">Fire Host</div>
+        <p class="exp-desc">Every session includes your host managing the fire from first light to last log. Setup, management, and breakdown. You just show up and get blissed out.</p>
       </div>
       <div class="exp-row">
         <div class="exp-title">Bring What You Love</div>
-        <p class="exp-desc">Food and drink are yours to bring. The sauna and fire master are ours to provide. Veniks welcome.</p>
+        <p class="exp-desc">Food and drink are yours to bring. The sauna and fire host are ours to provide. Veniks welcome.</p>
       </div>
       <div class="exp-row">
         <div class="exp-title">The Setting</div>
-        <p class="exp-desc">Private property in Washougal, Washington. Bring your group, bring a towel. Leave your expectations at the door.</p>
+        <p class="exp-desc">Any private property with reasonable access for a 1971 RV that can be placed safely. We can level it, but still need somewhat reasonable terrain, and clear access away from overhanging trees or other potential fire risks.</p>
       </div>
     </div>
   </div>
@@ -274,12 +281,10 @@
       <div class="pricing-card">
         <div class="price-label">5 Hours</div>
         <div class="price-amount">$600</div>
-        <p class="price-desc">Bring your group. Fire master included. Everything managed start to finish.</p>
       </div>
       <div class="pricing-card featured">
         <div class="price-label">7 Hours</div>
         <div class="price-amount">$750</div>
-        <p class="price-desc">More time, more rounds, more room to linger. For larger groups or those who want to go deeper.</p>
       </div>
     </div>
     <p class="pricing-note">Sessions are private and by inquiry only. Reach out and we'll talk through the details.</p>
