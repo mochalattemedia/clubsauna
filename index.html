@@ -136,7 +136,8 @@
       .feature-shot { height: 50vh; }
       .feature-caption { left: 24px; }
       footer { flex-direction: column; gap: 14px; text-align: center; }
-      .footer-social a { margin: 0 10px; }
+      .footer-social { display: flex; flex-wrap: nowrap; justify-content: center; gap: 4px; }
+      .footer-social a { margin: 0 6px; font-size: 0.62rem; }
     }
   </style>
 </head>
@@ -313,7 +314,7 @@
   <div class="footer-social">
     <a href="https://www.google.com/search?kgmid=%2Fg%2F11msy7kw2p&q=Club+Sauna" target="_blank">Google Reviews</a>
     <a href="https://instagram.com/cousineddiesauna" target="_blank">Instagram</a>
-    <a href="/waiver">Sign Waiver</a>
+    <a href="/waiver" style="color:var(--amber); white-space:nowrap;">Sign Waiver</a>
   </div>
   <div class="footer-copy">© 2026 Club Sauna · Washougal, WA</div>
 </footer>
